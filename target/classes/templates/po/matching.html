@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Three-Way Matching</title>
+</head>
+<body>
+<a th:href="@{'/po/' + ${po.id}}">Back</a>
+<h1 th:text="'Matching - ' + ${po.poNumber}"></h1>
+<form method="post">
+    <label>Invoice Quantity: <input name="invoiceQty" type="number" step="0.001"/></label>
+    <button type="submit">Match</button>
+ </form>
+<div th:if="${result != null}">
+    <p th:text="${result} ? 'Matched' : 'Mismatch'"></p>
+ </div>
+</body>
+</html>
+

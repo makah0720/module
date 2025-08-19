@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Expediting Dashboard</title>
+</head>
+<body>
+<h1>Expediting Dashboard</h1>
+<table>
+    <thead><tr><th>PO</th><th>Flagged Late</th><th>Last Follow Up</th></tr></thead>
+    <tbody>
+    <tr th:each="w : ${late}">
+        <td th:text="${w.purchaseOrder.poNumber}"></td>
+        <td th:text="${w.flaggedLate}"></td>
+        <td th:text="${w.lastFollowUpAt}"></td>
+    </tr>
+    </tbody>
+ </table>
+</body>
+</html>
+

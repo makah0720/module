@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Create PO</title>
+</head>
+<body>
+<h1>Create Purchase Order</h1>
+<form th:action="@{/po}" th:object="${po}" method="post">
+    <label>PO Number: <input th:field="*{poNumber}" /></label><br/>
+    <label>Supplier ID: <input th:field="*{supplierId}" /></label><br/>
+    <label>Order Date: <input type="date" th:field="*{orderDate}" /></label><br/>
+    <label>Expected Delivery: <input type="date" th:field="*{expectedDeliveryDate}" /></label><br/>
+    <label>Currency: <input th:field="*{currency}" /></label><br/>
+    <label>Created By: <input th:field="*{createdBy}" /></label><br/>
+    <button type="submit">Create</button>
+    <a th:href="@{/po}">Cancel</a>
+ </form>
+</body>
+</html>
+

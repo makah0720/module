@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Supplier Collaboration</title>
+</head>
+<body>
+<a th:href="@{'/po/' + ${po.id}}">Back</a>
+<h1 th:text="'Collaboration - ' + ${po.poNumber}"></h1>
+<form method="post" th:action="@{'/po/' + ${po.id} + '/collaboration/enable'}">
+    <button type="submit">Enable Collaboration</button>
+ </form>
+<p>Share Link: <span th:text="${po.collaboration != null ? po.collaboration.sharedPortalLink : 'N/A'}"></span></p>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Change Orders</title>
+</head>
+<body>
+<a th:href="@{'/po/' + ${po.id}}">Back</a>
+<h1 th:text="'Change Orders - ' + ${po.poNumber}"></h1>
+<form method="post" th:object="${form}">
+    <label>Reason: <input th:field="*{reason}"/></label>
+    <label>Requested By: <input th:field="*{requestedBy}"/></label>
+    <label>Revised Total: <input type="number" step="0.01" th:field="*{revisedTotalAmount}"/></label>
+    <label>Notes: <input th:field="*{notes}"/></label>
+    <button type="submit">Request</button>
+ </form>
+<table>
+    <thead><tr><th>ID</th><th>Reason</th><th>Approved</th><th>Revised Total</th></tr></thead>
+    <tbody>
+    <tr th:each="c : ${changes}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.reason}"></td>
+        <td th:text="${c.approved}"></td>
+        <td th:text="${c.revisedTotalAmount}"></td>
+    </tr>
+    </tbody>
+ </table>
+</body>
+</html>
+

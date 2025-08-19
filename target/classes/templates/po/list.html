@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>PO List</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+    </style>
+</head>
+<body>
+<h1>Purchase Orders</h1>
+<a th:href="@{/po/create}">Create PO</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>PO Number</th>
+        <th>Supplier</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="po : ${pos}">
+        <td th:text="${po.id}"></td>
+        <td th:text="${po.poNumber}"></td>
+        <td th:text="${po.supplierId}"></td>
+        <td th:text="${po.status}"></td>
+        <td th:text="${po.totalAmount}"></td>
+        <td><a th:href="@{'/po/' + ${po.id}}">View</a></td>
+    </tr>
+    </tbody>
+ </table>
+</body>
+</html>
+
