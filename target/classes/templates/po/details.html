@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>PO Details</title>
+</head>
+<body>
+<a th:href="@{/po}">Back</a>
+<h1 th:text="'PO ' + ${po.poNumber}"></h1>
+<p><b>Supplier:</b> <span th:text="${po.supplierId}"></span></p>
+<p><b>Status:</b> <span th:text="${po.status}"></span></p>
+<p><b>Total:</b> <span th:text="${po.totalAmount}"></span></p>
+
+<form th:action="@{'/po/' + ${po.id} + '/submit'}" method="post">
+    <button type="submit">Submit for Approval</button>
+ </form>
+</body>
+</html>
+

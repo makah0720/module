@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Approval Workflow</title>
+</head>
+<body>
+<a th:href="@{'/po/' + ${po.id}}">Back</a>
+<h1 th:text="'Approval - ' + ${po.poNumber}"></h1>
+<p>Status: <span th:text="${po.status}"></span></p>
+<form th:action="@{'/po/' + ${po.id} + '/approval/submit'}" method="post"><button type="submit">Submit</button></form>
+<form th:action="@{'/po/' + ${po.id} + '/approval/approve'}" method="post"><button type="submit">Approve</button></form>
+<form th:action="@{'/po/' + ${po.id} + '/approval/reject'}" method="post">
+    <input name="reason" placeholder="Reason"/>
+    <button type="submit">Reject</button>
+</form>
+</body>
+</html>
+

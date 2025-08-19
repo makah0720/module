@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Delivery Scheduling</title>
+</head>
+<body>
+<a th:href="@{'/po/' + ${po.id}}">Back</a>
+<h1 th:text="'Delivery - ' + ${po.poNumber}"></h1>
+<form method="post" th:object="${form}">
+    <label>Date: <input type="date" th:field="*{scheduledDate}"/></label>
+    <label>Site: <input th:field="*{site}"/></label>
+    <label>Window: <input th:field="*{deliveryWindow}"/></label>
+    <label>Confirmed: <input type="checkbox" th:field="*{confirmed}"/></label>
+    <button type="submit">Add</button>
+ </form>
+<table>
+    <thead><tr><th>Date</th><th>Site</th><th>Window</th><th>Confirmed</th></tr></thead>
+    <tbody>
+    <tr th:each="s : ${schedules}">
+        <td th:text="${s.scheduledDate}"></td>
+        <td th:text="${s.site}"></td>
+        <td th:text="${s.deliveryWindow}"></td>
+        <td th:text="${s.confirmed}"></td>
+    </tr>
+    </tbody>
+ </table>
+</body>
+</html>
+
