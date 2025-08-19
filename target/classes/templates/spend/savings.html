@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<section>
+    <div class="card">
+        <div class="section-title">Savings Tracking</div>
+        <form method="post" th:object="${form}" style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px;">
+            <input placeholder="Initiative" th:field="*{initiative}"/>
+            <input placeholder="Owner" th:field="*{owner}"/>
+            <input type="date" th:field="*{targetDate}"/>
+            <input type="number" step="0.01" placeholder="Target" th:field="*{targetAmount}"/>
+            <input type="number" step="0.01" placeholder="Realized" th:field="*{realizedAmount}"/>
+            <div><button type="submit">Add</button></div>
+        </form>
+    </div>
+    <div class="card">
+        <table>
+            <thead><tr><th>Initiative</th><th>Owner</th><th>Target Date</th><th>Target</th><th>Realized</th></tr></thead>
+            <tbody>
+            <tr th:each="s : ${items}">
+                <td th:text="${s.initiative}"></td>
+                <td th:text="${s.owner}"></td>
+                <td th:text="${s.targetDate}"></td>
+                <td th:text="${s.targetAmount}"></td>
+                <td th:text="${s.realizedAmount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</html>

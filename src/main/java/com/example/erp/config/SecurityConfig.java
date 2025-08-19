@@ -20,6 +20,8 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/", "/h2-console/**").permitAll()
                         .requestMatchers("/po/**").hasAnyRole("BUYER", "APPROVER")
                         .requestMatchers("/api/po/**").hasAnyRole("BUYER", "APPROVER", "SUPPLIER")
+                        .requestMatchers("/spend/**").hasAnyRole("ANALYST", "APPROVER")
+                        .requestMatchers("/api/spend/**").hasAnyRole("ANALYST", "APPROVER")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
@@ -35,7 +37,8 @@ public class SecurityConfig {
         UserDetails buyer = User.withDefaultPasswordEncoder().username("buyer").password("password").roles("BUYER").build();
         UserDetails approver = User.withDefaultPasswordEncoder().username("approver").password("password").roles("APPROVER").build();
         UserDetails supplier = User.withDefaultPasswordEncoder().username("supplier").password("password").roles("SUPPLIER").build();
-        return new InMemoryUserDetailsManager(buyer, approver, supplier);
+        UserDetails analyst = User.withDefaultPasswordEncoder().username("analyst").password("password").roles("ANALYST").build();
+        return new InMemoryUserDetailsManager(buyer, approver, supplier, analyst);
     }
 }
 

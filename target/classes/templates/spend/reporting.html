@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<section>
+    <div class="card">
+        <div class="section-title">Spend Reporting</div>
+        <form id="reportForm" onsubmit="submitReport(event)">
+            <input name="title" placeholder="Title" value="Spend Report"/>
+            <select name="format"><option>PDF</option><option>XLSX</option></select>
+            <button type="submit">Export</button>
+        </form>
+        <script>
+            async function submitReport(e){
+                e.preventDefault();
+                const form = e.target;
+                const dto = { title: form.title.value, format: form.format.value, data: { headers:["Supplier","Amount"], rows:[{"Supplier":"SUP-1","Amount":1000},{"Supplier":"SUP-2","Amount":500}] } };
+                const res = await fetch('/spend/reporting', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(dto) });
+                const blob = await res.blob();
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = dto.title + (dto.format === 'PDF' ? '.pdf' : '.xlsx');
+                a.click();
+            }
+        </script>
+    </div>
+</section>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<section>
+    <div class="card">
+        <div class="section-title">Spend Dashboard</div>
+        <form method="get" style="display:flex; gap:8px; align-items:center;">
+            <label>Start <input type="date" name="start" th:value="${start}"/></label>
+            <label>End <input type="date" name="end" th:value="${end}"/></label>
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+    <div class="grid">
+        <div class="card grid-4 kpi">Total Spend <strong th:text="${analytics.totalSpend}"></strong></div>
+        <div class="card grid-4 kpi">Maverick Spend <strong th:text="${analytics.maverickSpend}"></strong></div>
+        <div class="card grid-4 kpi">Savings <strong th:text="${analytics.savings}"></strong></div>
+        <div class="card grid-6 kpi">Suppliers <strong th:text="${analytics.supplierCount}"></strong></div>
+        <div class="card grid-6 kpi">Categories <strong th:text="${analytics.categoryCount}"></strong></div>
+    </div>
+</section>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${title}">ERP</title>
+    <link rel="stylesheet" th:href="@{/css/business.css}" />
+</head>
+<body>
+<div class="navbar">
+    <div>
+        <a th:href="@{/po}">Purchase Orders</a>
+        <a th:href="@{/spend}">Spend Dashboard</a>
+        <a th:href="@{/spend/analytics}">Analytics</a>
+        <a th:href="@{/spend/savings}">Savings</a>
+        <a th:href="@{/spend/reporting}">Reporting</a>
+    </div>
+    <div><a th:href="@{/logout}">Logout</a></div>
+ </div>
+<div class="container">
+    <div th:replace="~{::section}">Content</div>
+ </div>
+</body>
+</html>

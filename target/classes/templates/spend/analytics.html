@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<section>
+    <div class="card">
+        <div class="section-title">Spend Analytics</div>
+        <form method="get">
+            <label>Dimension Key
+                <select name="key" th:value="${key}">
+                    <option>YEAR|CATEGORY|SUPPLIER</option>
+                    <option>MONTH|CATEGORY</option>
+                    <option>YEAR|SUPPLIER</option>
+                </select>
+            </label>
+            <button type="submit">Query</button>
+        </form>
+    </div>
+    <div class="card">
+        <table>
+            <thead><tr><th>Key</th><th>Value</th><th>Amount</th></tr></thead>
+            <tbody>
+            <tr th:each="r : ${rows}">
+                <td th:text="${r.dimensionKey}"></td>
+                <td th:text="${r.dimensionValue}"></td>
+                <td th:text="${r.amount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</html>
