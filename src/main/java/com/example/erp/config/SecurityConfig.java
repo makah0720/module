@@ -21,6 +21,7 @@ public class SecurityConfig {
                         .requestMatchers("/po/**").hasAnyRole("BUYER", "APPROVER")
                         .requestMatchers("/api/po/**").hasAnyRole("BUYER", "APPROVER", "SUPPLIER")
                         .anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
                 .logout(Customizer.withDefaults());
 
